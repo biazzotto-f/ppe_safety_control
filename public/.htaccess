@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Define a pasta base para este diretório.
+    # IMPORTANTE: Altere '/ppe_safety_control/' para o nome exato da sua pasta de projeto.
+    RewriteBase /ppe_safety_control/public/
+
+    # Se a requisição não for para um ficheiro ou diretório existente...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # ...redireciona para o index.php.
+    RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+</IfModule>

@@ -1,0 +1,709 @@
+/* =================================
+   1. Configurações Gerais e Fontes
+   ================================= */
+body {
+  font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =================================
+   2. Estilos da Tela de Login
+   ================================= */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(-45deg, #4169e1, #1e293b, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.login-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.login-branding {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-branding .logo-icon {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-branding h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-branding p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.login-form-container {
+  background-color: #ffffff;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-container h2 {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-form-container .input-group-text {
+  background-color: #e9ecef;
+  border-right: none;
+}
+
+.login-form-container .form-control {
+  border-radius: 0.5rem !important;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+}
+
+.login-form-container .form-control:focus {
+  border-color: #4169e1;
+  box-shadow: 0 0 0 0.25rem rgba(65, 105, 225, 0.25);
+}
+
+.login-form-container .input-group .form-control {
+  border-left: none;
+}
+
+.login-form-container .btn-primary {
+  background-color: #4169e1;
+  border-color: #4169e1;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.login-form-container .btn-primary:hover {
+  background-color: #3558c4;
+  border-color: #3558c4;
+}
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .login-branding {
+    display: none;
+  }
+
+  .login-form-container {
+    border-radius: 1.5rem;
+  }
+}
+
+/* =================================
+   3. Layout Principal Compacto
+   ================================= */
+.main-layout-body {
+  background: linear-gradient(-45deg, #e2e8f0, #f1f3f5, #e9ecef, #f8fafc);
+  background-size: 400% 400%;
+  animation: gradientAnimation 25s ease infinite;
+}
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+.main-content {
+  margin-left: 240px;
+  padding: calc(60px + 1.5rem) 1.5rem 1.5rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* =================================
+   Barra Superior (Topbar) Compacta
+   ================================= */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 240px;
+  right: 0;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+}
+
+.topbar .dropdown-toggle::after {
+  display: none;
+}
+
+.topbar .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.topbar .user-info .user-name {
+  margin-right: 0.75rem;
+  font-weight: 500;
+}
+
+.topbar .user-info .user-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #0d6efd;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.topbar .user-info .user-avatar .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =================================
+   Seletor de Empresa na Sidebar
+   ================================= */
+.sidebar .company-selector {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar .company-selector .dropdown-toggle {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar .company-selector .dropdown-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .company-logo-wrapper {
+  width: 85%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar .company-logo-wrapper .company-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sidebar .company-logo-wrapper .fa-building,
+.sidebar .company-logo-wrapper .fa-globe {
+  font-size: 2.5rem;
+  color: #ced4da;
+}
+
+.sidebar .company-selector-text {
+  line-height: 1.3;
+}
+
+.sidebar .company-selector-text small {
+  font-size: 0.65rem;
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.sidebar .company-selector-text .company-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.sidebar .company-selector .dropdown-toggle::after {
+  display: none;
+}
+
+.sidebar .company-selector .dropdown-menu {
+  width: 100%;
+  background-color: #34495e;
+  border: 1px solid #46627f;
+}
+
+.sidebar .company-selector .dropdown-item {
+  color: #ced4da;
+  font-size: 0.9rem;
+}
+
+.sidebar .company-selector .dropdown-item:hover,
+.sidebar .company-selector .dropdown-item.active {
+  background-color: #4169e1;
+  color: #fff;
+}
+
+/* =================================
+   Navegação da Sidebar
+   ================================= */
+.sidebar-nav-wrapper {
+  margin-top: 1rem;
+}
+
+.sidebar .nav-link {
+  color: #ced4da;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  margin: 0.1rem 0.5rem;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.sidebar .nav-link.active {
+  color: white;
+  font-weight: 500;
+  background-color: transparent;
+  box-shadow: 0 0 0 2px #4169e1;
+}
+
+.sidebar .nav-link .fa-fw {
+  margin-right: 12px;
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+/* =================================
+   Sidebar Submenu
+   ================================= */
+.sidebar .nav-link[data-bs-toggle="collapse"]::after {
+  content: "\f078";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  display: inline-block;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+
+.sidebar .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+  transform: rotate(-180deg);
+}
+
+.sidebar .sub-link {
+  padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+  font-size: 0.85rem;
+}
+
+.sidebar .sub-link.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* =================================
+   Tabelas Modernas Compactas
+   ================================= */
+.table-modern {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.table-modern thead th {
+  background-color: transparent;
+  border: none;
+  color: #2c3e50;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
+}
+
+.table-modern tbody tr {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.table-modern tbody tr:hover {
+  background-color: #f0f4f8;
+  /* Cinza azulado bem clarinho */
+}
+
+.table-modern tbody td {
+  border: none;
+  padding: 0.8rem 1rem;
+  vertical-align: middle;
+  color: #495057;
+}
+
+.table-modern tbody td:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.table-modern tbody td:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.table-modern .user-avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #e9ecef;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.table-modern .user-avatar .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.table-modern .table-logo {
+  width: 40px;
+  height: 40px;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.table-modern .table-logo .logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.table-modern tbody tr.tr-inactive {
+  background-color: #f1f3f5;
+  opacity: 0.7;
+}
+
+.table-modern tbody tr.tr-inactive:hover {
+  background-color: #f1f3f5;
+}
+
+.table-modern tbody tr.tr-expired {
+  background-color: #ffe5e5;
+}
+
+.table-modern tbody tr.tr-expired:hover {
+  background-color: #f8d7da;
+}
+
+/* =================================
+   Badges de Risco
+   ================================= */
+.badge-risco {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 22px;
+  margin-right: 4px;
+}
+
+.badge-risco-f {
+  background-color: #28a745;
+}
+
+/* Verde */
+.badge-risco-q {
+  background-color: #dc3545;
+}
+
+/* Vermelho */
+.badge-risco-b {
+  background-color: #964B00;
+}
+
+/* Marrom */
+.badge-risco-a {
+  background-color: #007bff;
+}
+
+/* Azul */
+.badge-risco-e {
+  background-color: #ffc107;
+}
+
+/* Amarelo */
+
+/* Estilo dos cards */
+.card {
+  border: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* =================================
+   Página de Perfil e Formulários
+   ================================= */
+.profile-pic-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic-wrapper .profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-preview-box {
+  width: 180px;
+  height: 180px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.image-preview-box .image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+/* =================================
+   Seleção de Empresa em Cards
+   ================================= */
+.company-card-selector {
+  display: block;
+  border: 2px solid #dee2e6;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  height: 100%;
+}
+
+.company-card-selector:hover {
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+}
+
+.company-card-selector.selected {
+  border-color: #4169e1;
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.25);
+}
+
+.company-card-selector .card-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.company-card-selector .card-company-name {
+  font-weight: 500;
+  color: #212529;
+}
+
+.company-card-selector input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* =================================
+   Responsividade para Dispositivos Móveis
+   ================================= */
+.sidebar-toggle {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  .main-content,
+  .topbar {
+    margin-left: 0;
+    left: 0;
+  }
+
+  .topbar {
+    justify-content: space-between;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    background: none;
+    border: none;
+  }
+}
+
+/* =================================
+   Novos Estilos para Cards de Entrega de EPI
+   ================================= */
+.epi-delivery-item {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.epi-delivery-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.375rem;
+  /* Cantos arredondados */
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.epi-delivery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.epi-delivery-name {
+  font-weight: 500;
+  color: #343a40;
+}

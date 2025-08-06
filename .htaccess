@@ -1,0 +1,10 @@
+# Desabilita a listagem de diretórios por segurança.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redireciona todas as requisições para a pasta /public,
+    # mantendo a URL original para ser processada pelo segundo .htaccess.
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
